@@ -1,26 +1,58 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import PatientView from "../views/patient/patient.vue"
+import PatientsView from "../views/patients/patients.vue"
+import ConsultationView from "../views/consultation/consultation.vue"
+import ConsultationFormView from "../views/consultation/form/form.vue"
+
+
+import store from "../store";
+
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "home",
-    component: HomeView,
+    path: "/patients",
+    name: "patients",
+    component: PatientsView,
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/patient/:id ",
+    name: "patient",
+    component: PatientView,
+  },
+  {
+    path: "/patient/edit/:id",
+    name: "patient/edit",
+    component: PatientView,
+  },
+  {
+    path: "/patient/new",
+    name: "patient/new",
+    component: PatientView,
+  },
+  {
+    path: "/consultation",
+    name: "consultation",
+    component: ConsultationView,
+  },
+  {
+    path: "/consultation/edit",
+    name: "consultation/edit",
+    component: ConsultationFormView,
+  },
+  {
+    path: "/consultation/new",
+    name: "consultation/new",
+    component: ConsultationFormView,
   },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach(() => {
+    store.dispatch("initDataPatients");
 });
 
 export default router;

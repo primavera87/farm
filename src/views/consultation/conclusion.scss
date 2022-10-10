@@ -1,0 +1,11 @@
+.consultation {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  .buttons-group-settings {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}

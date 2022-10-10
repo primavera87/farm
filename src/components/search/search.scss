@@ -1,0 +1,9 @@
+.search-panel {
+  display: grid;
+  grid-template-columns: 4fr 130px;
+  gap: 1.5rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
